@@ -10,4 +10,3 @@ Feature: US1001 Testotomasyonu phone arama testi
     Then arama sonucunda urun bulunabildigini test eder
     And sayfayi kapatir
 
-
