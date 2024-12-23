@@ -1,6 +1,6 @@
 
   Feature: US1009 kullanici fake bilgilerle kayit olusturmayi dener
-    @wip
+
     Scenario: TC15 Kullanici fake bilgilerle kayit olusturabilmeli
 
       Given kullanici test data dosyasinda verilen "faceUrl" anasayfaya gider
