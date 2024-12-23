@@ -8,3 +8,5 @@
       And senkronizasyon icin 3 saniye bekler
       Then arama sonucunda urun bulunabildigini test eder
       And sayfayi kapatir
+
+

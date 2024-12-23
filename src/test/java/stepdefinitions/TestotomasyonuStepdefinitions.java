@@ -73,4 +73,57 @@ public class TestotomasyonuStepdefinitions {
 
         ReusableMethods.bekle(beklenecekSaniye);
     }
+
+    @And("ilk urunu tiklar")
+    public void ilkUrunuTiklar() {
+
+        testotomasyonuPage.ilkUrunElementi.click();
+
+    }
+
+    @Then("acilan sayfada urun isminde case sensitive olmadan {string} bulundugunu test eder")
+    public void acilanSayfadaUrunIsmindeCaseSensitiveOlmadanBulundugunuTestEder(String arananKelime) {
+
+        String actualUrunIsmi = testotomasyonuPage.ilkUrunSayfasindakiIsimElementi
+                                                    .getText()
+                                                    .toLowerCase();
+
+        Assertions.assertTrue(actualUrunIsmi.contains(arananKelime));
+    }
+
+    @When("arama kutusuna test data dosyasindaki belirlenen kelimeyi yazip aratir")
+    public void aramaKutusunaTestDataDosyasindakiBelirlenenKelimeyiYazipAratir() {
+
+        testotomasyonuPage.aramaKutusu
+                            .sendKeys(ConfigReader.getProperty("toAranacakKelime") + Keys.ENTER);
+    }
+
+    @Then("acilan sayfada urun isminde case sensitive olmadan test data dosyasindaki belirlenen kelime bulundugunu test eder")
+    public void acilanSayfadaUrunIsmindeCaseSensitiveOlmadanTestDataDosyasindakiBelirlenenKelimeBulundugunuTestEder() {
+
+        String actualUrunIsmi = testotomasyonuPage.ilkUrunSayfasindakiIsimElementi
+                                                    .getText()
+                                                    .toLowerCase();
+
+        String expectedIsimIcerik = ConfigReader.getProperty("toAranacakKelime");
+
+        Assertions.assertTrue(actualUrunIsmi.contains(expectedIsimIcerik));
+
+    }
+
+    @Given("kullanici test data dosyasinda verilen {string} anasayfaya gider")
+    public void kullanici_test_data_dosyasinda_verilen_anasayfaya_gider(String configIstenenUrl) {
+
+        Driver.getDriver().get(ConfigReader.getProperty(configIstenenUrl));
+
+    }
+    @Then("url'in test data dosyasinda verilen {string} ile ayni oldugunu test eder")
+    public void url_in_test_data_dosyasinda_verilen_ile_ayni_oldugunu_test_eder(String configIstenenUrl) {
+
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        String expectedUrl = ConfigReader.getProperty(configIstenenUrl);
+
+        Assertions.assertEquals(expectedUrl,actualUrl);
+
+    }
 }
