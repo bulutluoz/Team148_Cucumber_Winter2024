@@ -1,6 +1,6 @@
 
   Feature: US1010 kullanici alisveris yapar
-    @wip
+
     Scenario: TC16 Kullanici istedigi urunu sepete ekledigini test eder
 
       Given kullanici test data dosyasinda verilen "sauceUrl" anasayfaya gider

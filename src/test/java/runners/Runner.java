@@ -18,7 +18,9 @@ import org.junit.platform.suite.api.Suite;
 //@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, json:target/json-reports/cucumberRapor.json")
 //@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, junit:target/xml-report/cucumber.xml")
 
+
 public class Runner {
+
     /*
         Cucumber'daki Runner Class'i icinde hicbir kod yazilmaz
 
