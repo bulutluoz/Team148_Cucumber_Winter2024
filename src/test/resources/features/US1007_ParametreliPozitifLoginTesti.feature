@@ -1,7 +1,7 @@
 
   Feature: US1007 Kullanici gecerli bilgilerle sisteme giris yapar
 
-
+    @smoke
     Scenario: TC11 Gecerli bilgilerle sisteme giris yapilabilmeli
 
       Given kullanici test data dosyasinda verilen "toUrl" anasayfaya gider

@@ -1,5 +1,5 @@
 
-
+  @smoke
   Feature: US1008 Kullanici yanlis bilgilerle giris yapamaz
 
     Scenario: TC12 kullanici yanlis password ile giris yapamamali
