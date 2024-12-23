@@ -11,9 +11,10 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasspathResource("src/test/java")
 @ConfigurationParameter(key = Constants.FEATURES_PROPERTY_NAME,value = "src/test/resources/features")
 @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME,value = "stepdefinitions")
-@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME,value = "@E2E1")
+@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME,value = "@wip")
 
 @ConfigurationParameter(key = Constants.EXECUTION_DRY_RUN_PROPERTY_NAME,value = "false")
+
 //@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, html:target/cucumber-report/HtmlReport.html")
 //@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, json:target/json-reports/cucumberRapor.json")
 //@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, junit:target/xml-report/cucumber.xml")
@@ -49,7 +50,16 @@ public class Runner {
         2- istediginiz Feature veya Scenario'lari bir tag ile belirleyip,
            Constants.FILTER_TAGS_PROPERTY_NAME : "@smoke"
 
+        EGER Runner dosyasi ile calistirdigimiz feature dosyalarini
+        SADECE eksik stepdefinition'lari bulmak ve method'larini olusturmak icin
+        calistiriyorsak
 
+        Constants.EXECUTION_DRY_RUN_PROPERTY_NAME : "true" yapariz
+
+        dryRun degeri true iken Runner SADECE eksik adim kontrolu yapar
+        Feature veya Scenario'lari calistirmaz
+        eksik adim varsa failed deyip eksik adimlari verir
+        eksik adim yoksa passed deyip calismayi bitirir
 
      */
 }
