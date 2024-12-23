@@ -14,15 +14,23 @@ public class FacebookPage {
     @FindBy(xpath = "//input[ @id='email']")
     public WebElement emailKutusu;
 
-
     @FindBy(id = "pass")
     public WebElement passwordKutusu;
 
     @FindBy(xpath = "//*[ @name='login']")
     public WebElement loginButonu;
 
+    @FindBy(xpath = "(//span[.='Allow all cookies'])[4]")
+    public WebElement cookiesKabulButonu;
 
+    @FindBy(xpath = "//*[@*='open-registration-form-button']")
+    public WebElement yeniKayitOlusturButonu;
 
+    @FindBy(name = "firstname")
+    public WebElement kayitOlusturmaFirstnameKutusu;
+
+    @FindBy(name = "websubmit")
+    public WebElement signUpButtonu;
 
 
 }
