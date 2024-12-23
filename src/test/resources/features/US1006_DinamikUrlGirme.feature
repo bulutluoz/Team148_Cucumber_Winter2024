@@ -1,4 +1,5 @@
 
+
   Feature: US1006 Kullanici url'i dinamik olarak girer
 
     Scenario: TC10 Kullanici Url'i config dosyasindan dinamik olarak kullanabilmeli
