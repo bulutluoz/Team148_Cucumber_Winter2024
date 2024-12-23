@@ -153,4 +153,15 @@ public class TestotomasyonuStepdefinitions {
         Assertions.assertTrue(testotomasyonuPage.logoutButonu.isDisplayed());
 
     }
+
+    @Then("logout butonuna basar")
+    public void logoutButonunaBasar() {
+        testotomasyonuPage.logoutButonu.click();
+    }
+
+    @And("sisteme giris yapamadigini test eder")
+    public void sistemeGirisYapamadiginiTestEder() {
+
+        Assertions.assertTrue(testotomasyonuPage.emailKutusu.isDisplayed());
+    }
 }
