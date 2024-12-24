@@ -1,6 +1,9 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.*;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
 import pages.TestotomasyonuPage;
@@ -8,10 +11,17 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 public class TestotomasyonuStepdefinitions {
 
     TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
+    String satirdakiUrunIsmi;
+    Double satirdakiMinBulunacakUrunSayisi;
+    Double actualSonucSayisi;
 
 
     @Given("kullanici testotomasyonu anasayfaya gider")
@@ -194,4 +204,58 @@ public class TestotomasyonuStepdefinitions {
 
 
     }
+
+    @When("email olarak listede verilen {string} girer")
+    public void emailOlarakListedeVerilenGirer(String direktEmail) {
+        testotomasyonuPage.emailKutusu.sendKeys(direktEmail);
+    }
+
+
+    @And("password olarak listede verilen {string} girer")
+    public void passwordOlarakListedeVerilenGirer(String direktPassword) {
+        testotomasyonuPage.passwordKutusu.sendKeys(direktPassword);
+
+    }
+
+    @Then("urun excelindeki {string} daki urunun min. miktarini ve urun ismini kaydeder")
+    public void urun_excelindeki_daki_urunun_min_miktarini_ve_urun_ismini_kaydeder(String excelSatirNoStr) throws IOException {
+        //  ornek satir no  "3"
+
+        String excelDosyaYolu = "src/test/resources/urunListesi.xlsx";
+        FileInputStream fileInputStream = new FileInputStream(excelDosyaYolu);
+        Workbook workbook = WorkbookFactory.create(fileInputStream);
+        Sheet calisilanSayfa = workbook.getSheet("Sheet1");
+
+        // sayfaya kadar gittik, bu method'a parametre olarak gelen
+        // String excelsatirNoStr  degerine gore, ilgili satira gidip
+        // satirdakiUrunIsmi ve satirdakiMinBulunacakurunSayisi degerlerini kaydedelim
+
+        // once istenen satira gidelim
+        int satirNo = Integer.parseInt(excelSatirNoStr); // 3
+
+        satirdakiUrunIsmi = calisilanSayfa.getRow(satirNo-1).getCell(0).getStringCellValue();
+        satirdakiMinBulunacakUrunSayisi = calisilanSayfa.getRow(satirNo-1).getCell(1).getNumericCellValue();
+
+    }
+    @Then("urun ismini testotomasyonu sayfasinda arar ve sonuc sayisini kaydeder")
+    public void urun_ismini_testotomasyonu_sayfasinda_arar_ve_sonuc_sayisini_kaydeder() {
+
+        testotomasyonuPage.aramaKutusu.sendKeys(satirdakiUrunIsmi + Keys.ENTER);
+
+        String actualSonucYazisi = testotomasyonuPage.aramaSonucuElementi.getText();
+        // 4 Products Found
+
+        String actualSonucSayisiStr = actualSonucYazisi.replaceAll("\\D",""); // "4"
+
+        actualSonucSayisi = Double.parseDouble(actualSonucSayisiStr);
+
+
+    }
+    @Then("bulunan urun sayisinin {string} da verilen min. miktardan fazla oldugunu test eder")
+    public void bulunan_urun_sayisinin_da_verilen_min_miktardan_fazla_oldugunu_test_eder(String satirNoStr) {
+
+        Assertions.assertTrue(actualSonucSayisi >= satirdakiMinBulunacakUrunSayisi);
+
+    }
+
 }

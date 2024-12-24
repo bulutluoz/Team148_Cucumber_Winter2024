@@ -1,7 +1,7 @@
 
   Feature: US1013 Kullanici belirlenen miktarda urun bulabilmeli
 
-    @wip
+
     Scenario Outline: TC19 kullanici arattigi urunlerin
                       belirlenen miktar veya daha fazla bulunabildigini test edebilmeli
 
