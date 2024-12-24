@@ -164,4 +164,34 @@ public class TestotomasyonuStepdefinitions {
 
         Assertions.assertTrue(testotomasyonuPage.emailKutusu.isDisplayed());
     }
+
+
+    @Then("arama sonucunda {string} veya daha fazla urun bulunabildigini test eder")
+    public void aramaSonucundaVeyaDahaFazlaUrunBulunabildiginiTestEder(String belirlenenMiktarStr) {
+
+     /*
+        belirlenen sayida veya daha fazla urun bulunabildigini test etmek icin
+        1- sonuc yazisindaki sayiyi alabiliriz
+        2- bulunan urunleri findElements ile locate edip bir listeye koyabilir
+           ve listenin size'ina bakabiliriz
+
+        ANCCCAAAKKK 2.yontemi tercih ederseniz
+        gosterilecek urun olmadiginda, locator implicitlyWait suresince
+        elemanlari locate edebilmek icin bekleyecektir
+        bu da zaman kaybi olur
+      */
+
+        String actualSonucYazisi = testotomasyonuPage.aramaSonucuElementi.getText();
+                                    // 4 Products Found
+
+        String actualSonucSayisiStr = actualSonucYazisi.replaceAll("\\D",""); // "4"
+
+        int actualSonucSayisi = Integer.parseInt(actualSonucSayisiStr);
+
+        int expectedMinSonucsayisi = Integer.parseInt(belirlenenMiktarStr);
+
+        Assertions.assertTrue(actualSonucSayisi >= expectedMinSonucsayisi);
+
+
+    }
 }
