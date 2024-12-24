@@ -13,6 +13,7 @@ import utilities.ReusableMethods;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -22,6 +23,8 @@ public class TestotomasyonuStepdefinitions {
     String satirdakiUrunIsmi;
     Double satirdakiMinBulunacakUrunSayisi;
     Double actualSonucSayisi;
+    Sheet calisilanSayfa;
+    Workbook workbook;
 
 
     @Given("kullanici testotomasyonu anasayfaya gider")
@@ -223,8 +226,8 @@ public class TestotomasyonuStepdefinitions {
 
         String excelDosyaYolu = "src/test/resources/urunListesi.xlsx";
         FileInputStream fileInputStream = new FileInputStream(excelDosyaYolu);
-        Workbook workbook = WorkbookFactory.create(fileInputStream);
-        Sheet calisilanSayfa = workbook.getSheet("Sheet1");
+        workbook = WorkbookFactory.create(fileInputStream);
+        calisilanSayfa = workbook.getSheet("Sheet1");
 
         // sayfaya kadar gittik, bu method'a parametre olarak gelen
         // String excelsatirNoStr  degerine gore, ilgili satira gidip
@@ -258,4 +261,27 @@ public class TestotomasyonuStepdefinitions {
 
     }
 
+    @Then("bulunan sonuc sayisini excelde {string} daki {int}. sutuna yazdirir")
+    public void bulunanSonucSayisiniExceldeDakiSutunaYazdirir(String satirNoStr, int sutunNo) throws IOException {
+
+        // once workbook'da istenen islemi yapalim
+        int satirNo = Integer.parseInt(satirNoStr);
+
+        calisilanSayfa
+                .getRow(satirNo-1)
+                .createCell(sutunNo-1)
+                .setCellValue(actualSonucSayisi);
+
+        // excel'e bilgi yazdirabilmek icin FileOutputStream'e ihtiyac var
+
+        String excelDosyaYolu = "src/test/resources/urunListesi.xlsx";
+
+        FileOutputStream fileOutputStream = new FileOutputStream(excelDosyaYolu);
+        workbook.write(fileOutputStream);
+
+        fileOutputStream.close();
+        workbook.close();
+
+
+    }
 }
