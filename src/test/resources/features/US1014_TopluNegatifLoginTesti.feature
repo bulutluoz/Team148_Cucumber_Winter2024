@@ -11,7 +11,7 @@
       Then signIn butonuna basar
       And sisteme giris yapamadigini test eder
       And senkronizasyon icin 1 saniye bekler
-      Then sayfayi kapatir
+
       Examples:  
         |verilenEmail    		|verilenPassword    |  
         |esra@fmail.com  		|1234555            |  

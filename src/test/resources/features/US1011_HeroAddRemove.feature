@@ -12,5 +12,5 @@
       And Add Remove Elements yazisinin gorunur oldugunu test eder
       And senkronizasyon icin 2 saniye bekler
       And Delete butonu’nun gorunur olmadigini test eder
-      And sayfayi kapatir
+
 

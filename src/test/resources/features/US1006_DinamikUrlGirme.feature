@@ -7,7 +7,7 @@
       Given kullanici test data dosyasinda verilen "editorUrl" anasayfaya gider
       Then url'in test data dosyasinda verilen "editorUrl" ile ayni oldugunu test eder
       And senkronizasyon icin 5 saniye bekler
-      And sayfayi kapatir
+
 
 
 

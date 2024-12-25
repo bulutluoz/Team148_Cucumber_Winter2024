@@ -7,7 +7,7 @@
       When arama kutusuna "<aratilacakKelime>" yazip aratir
       Then arama sonucunda urun bulunabildigini test eder
       And senkronizasyon icin 1 saniye bekler
-      And sayfayi kapatir
+
 
 
       Examples:
