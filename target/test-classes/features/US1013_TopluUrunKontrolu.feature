@@ -10,7 +10,7 @@
       When arama kutusuna "<aranacakKelime>" yazip aratir
       Then arama sonucunda "<belirlenenMiktar>" veya daha fazla urun bulunabildigini test eder
       And senkronizasyon icin 1 saniye bekler
-      And sayfayi kapatir
+
 
       Examples:
       |aranacakKelime|belirlenenMiktar|

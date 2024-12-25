@@ -1,7 +1,7 @@
 
   Feature: US1007 Kullanici gecerli bilgilerle sisteme giris yapar
 
-    @smoke @wip
+    @smoke @paralel1
     Scenario: TC11 Gecerli bilgilerle sisteme giris yapilabilmeli
 
       Given kullanici test data dosyasinda verilen "toUrl" anasayfaya gider
@@ -12,4 +12,4 @@
       And basarili giris yapilabildigini test eder
       And senkronizasyon icin 3 saniye bekler
       Then logout butonuna basar
-      And sayfayi kapatir
+

@@ -1,6 +1,7 @@
 
   Feature: US1011 kullanici liste olarak verilen urunleri aratir
 
+    @rapor
     Scenario Outline: TC18 Kullanici liste olarak verilen urunleri aratabilmeli
 
       Given kullanici test data dosyasinda verilen "toUrl" anasayfaya gider

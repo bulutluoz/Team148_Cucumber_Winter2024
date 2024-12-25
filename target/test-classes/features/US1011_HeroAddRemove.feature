@@ -1,7 +1,7 @@
 
   Feature: US1011 kullanici butonlari calistirir
 
-
+    @paralel1
     Scenario: TC17 Kullanici butonlari kullanabilmeli
 
       Given kullanici test data dosyasinda verilen "herokuUrl" anasayfaya gider
@@ -12,5 +12,5 @@
       And Add Remove Elements yazisinin gorunur oldugunu test eder
       And senkronizasyon icin 2 saniye bekler
       And Delete butonu’nun gorunur olmadigini test eder
-      And sayfayi kapatir
+
 

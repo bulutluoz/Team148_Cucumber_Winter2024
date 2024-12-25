@@ -1,6 +1,7 @@
 
   Feature: US1010 kullanici alisveris yapar
 
+    @paralel2
     Scenario: TC16 Kullanici istedigi urunu sepete ekledigini test eder
 
       Given kullanici test data dosyasinda verilen "sauceUrl" anasayfaya gider

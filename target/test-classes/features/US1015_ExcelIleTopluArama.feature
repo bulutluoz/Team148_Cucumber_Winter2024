@@ -9,7 +9,7 @@
       And urun ismini testotomasyonu sayfasinda arar ve sonuc sayisini kaydeder
       And bulunan urun sayisinin "<istenenSatir>" da verilen min. miktardan fazla oldugunu test eder
       Then bulunan sonuc sayisini excelde "<istenenSatir>" daki 4. sutuna yazdirir
-      And sayfayi kapatir
+
       Examples:
         |istenenSatir|
         |2          |

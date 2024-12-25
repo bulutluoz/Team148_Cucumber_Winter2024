@@ -1,5 +1,5 @@
 
-  @smoke
+  @smoke @json
   Feature: US1008 Kullanici yanlis bilgilerle giris yapamaz
 
     Scenario: TC12 kullanici yanlis password ile giris yapamamali
@@ -11,7 +11,7 @@
       And sisteme giris yapamadigini test eder
       And senkronizasyon icin 3 saniye bekler
 
-
+    @paralel2
     Scenario: TC13 kullanici yanlis email ile giris yapamamali
       Given kullanici test data dosyasinda verilen "toUrl" anasayfaya gider
       Then account butonuna basar

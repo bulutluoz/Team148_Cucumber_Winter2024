@@ -1,5 +1,6 @@
 Feature: US1005 Kullanici belirlenen kelimeyi aratir
 
+  @paralel2
   Scenario: TC09 Kullanici belirlenen kelimeyi aratir
             ve bulunabildigini test eder
 
