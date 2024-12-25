@@ -37,5 +37,12 @@ public class ParalelRun1 {
         2- pom.xml'e terminalden calistirmayi saglayacak
            ve bize guzel HTML raporlar olusturacak
            bazi plugin'leri eklemeliyiz
+        3- ekledigimiz plugin'lerde
+           calisacak Runner adedi ve
+           calisacak Runner'larin bulundugu yer
+           ve isimlerindeki ortak bolumu guncellememiz gerekir
+        4- Terminal'den mvn clean verify yazarak
+           pluginler uzerinden istenen Runner Class'lar calistirilabilir
+
      */
 }
