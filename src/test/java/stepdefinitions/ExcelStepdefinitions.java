@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -124,19 +125,52 @@ public class ExcelStepdefinitions {
 
         }
 
-        System.out.println(ulkelerMap);
+        /*
+            {
+              Abidjan = {ingilizceUlkeIsmi=Ivory Coast, turkceBaskentIsmi=Abidjan, turkceUlkeIsmi=Fildişi Sahili},
+              Abu Dhabi={ingilizceUlkeIsmi=United Arab Emirates, turkceBaskentIsmi=Abu Dabi, turkceUlkeIsmi=Birleşik Arap Emrlikleri},
+              Abuja={ingilizceUlkeIsmi=Nigeria, turkceBaskentIsmi=Abuja, turkceUlkeIsmi=Nijerya},
+              Accra={ingilizceUlkeIsmi=Ghana, turkceBaskentIsmi=Accra, turkceUlkeIsmi=Gana}
+         */
 
     }
 
     @Then("Ingilizce baskent ismi {string} olan ulkenin tum bilgilerini yazdirir")
     public void ingilizceBaskentIsmiOlanUlkeninTumBilgileriniYazdirir(String verilenIngilizceBaskentIsmi) {
 
+        System.out.println(ulkelerMap.get(verilenIngilizceBaskentIsmi));
+        // {ingilizceUlkeIsmi=Indonesia, turkceBaskentIsmi=Cakarta, turkceUlkeIsmi=Endonezya}
+
+        System.out.println("Baskent ismi " +verilenIngilizceBaskentIsmi + " olan ulke bilgileri : \n"
+                            + "Ingilizce ulke ismi : " + ulkelerMap.get(verilenIngilizceBaskentIsmi).get("ingilizceUlkeIsmi")
+                            + "\nTurkce ulke ismi : " + ulkelerMap.get(verilenIngilizceBaskentIsmi).get("turkceUlkeIsmi")
+                            + "\nTurkce baskent ismi : " + ulkelerMap.get(verilenIngilizceBaskentIsmi).get("turkceBaskentIsmi")
+        );
 
     }
 
     @And("mapi kullanarak Turkce ismi {string} olan bir ulke bulundugunu test eder")
     public void mapiKullanarakTurkceIsmiOlanBirUlkeBulundugunuTestEder(String verilenTurkceUlkeIsmi) {
 
+        // Turkce ulke ismi value icindeki bilgilerden biri
+        // ulkelerMap.containsValue() kullanmak icin TUM VALUE'nun verilmis olmasi lazim
+        // Bu durumda tum value'leri gozden gecirebilmek icin
+        // map'den tum value'leri alip, farkli bir formatta kaydetmeliyiz
 
+        Collection<Map<String,String>> valueCollection = ulkelerMap.values();
+
+        // valueCollection'daki herbir value'yu ele almak icin
+        // bir for-each loop olusturabiliriz
+        boolean arananUlkeVarMi = false;
+
+        for (Map<String,String> eachValueMap  :valueCollection){
+
+            if (eachValueMap.get("turkceUlkeIsmi").equals(verilenTurkceUlkeIsmi)){
+                arananUlkeVarMi = true;
+                break;
+            }
+        }
+
+        Assertions.assertTrue(arananUlkeVarMi);
     }
 }
