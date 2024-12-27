@@ -3,6 +3,7 @@ pages/EditorPage.class
 runners/ParalelRun1.class
 pages/TestotomasyonuFormPage.class
 stepdefinitions/HeroStepdefinitions.class
+stepdefinitions/GoogleStepdefinitions.class
 pages/SauceLabsPage.class
 utilities/ReusableMethods.class
 runners/Runner.class
@@ -10,10 +11,14 @@ stepdefinitions/FacebookStepdefinitions.class
 pages/FacebookPage.class
 stepdefinitions/SauceLabStepdefinitions.class
 utilities/ConfigReader.class
+pages/GooglePage.class
 stepdefinitions/Hooks.class
 pages/WebDriverUniversityPage.class
+stepdefinitions/ExcelStepdefinitions.class
 pages/ZeroPage.class
+pages/DemoqaPage.class
 runners/ParalelRun2.class
 utilities/Driver.class
 pages/TestotomasyonuPage.class
 stepdefinitions/TestotomasyonuStepdefinitions.class
+stepdefinitions/DemoqaStepdefinitions.class
