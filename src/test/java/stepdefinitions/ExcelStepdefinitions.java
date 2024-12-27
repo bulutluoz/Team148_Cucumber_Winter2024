@@ -11,12 +11,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ExcelStepdefinitions {
     Workbook workbook;
     Sheet sayfa1 ;
     String actualHucreData;
-    Map<String, Map<String,String>> ulkelermap;
+    Map<String, Map<String,String>> ulkelerMap;
 
     @Given("kullanici baskentler exceline ulasir")
     public void kullanici_baskentler_exceline_ulasir() throws IOException {
@@ -106,6 +107,8 @@ public class ExcelStepdefinitions {
                 biz map yapmayi tercih ettik
 
          */
+
+        ulkelerMap = new TreeMap<>();
 
 
     }
