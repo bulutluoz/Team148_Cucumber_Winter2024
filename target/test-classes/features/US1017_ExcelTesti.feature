@@ -11,5 +11,5 @@
       And excelde kayitli ulke sayisinin 190 oldugunu test eder
       And excelde kullanilan fiziki satir sayisinin 191 oldugunu test eder
       When Tum bilgileri map olarak kaydedip
-      Then Ingilizce baskent ismi "Ankara" olan ulkenin tum bilgilerini yazdirir
+      Then Ingilizce baskent ismi "Berlin" olan ulkenin tum bilgilerini yazdirir
       And mapi kullanarak Turkce ismi "Hollanda" olan bir ulke bulundugunu test eder
