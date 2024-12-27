@@ -24,8 +24,10 @@ public class DemoqaPage {
     @FindBy(xpath = "//*[.='Elements']")
     public WebElement elementsSekmesi;
 
-
     @FindBy(id = "enableAfter")
     public WebElement enableAfter5SecondsButonu;
+
+    @FindBy(id = "visibleAfter")
+    public WebElement visibleAfter5Seconds;
 
 }

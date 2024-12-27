@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.en.*;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -83,4 +84,25 @@ public class DemoqaStepdefinitions {
     }
 
 
+    @And("Visible After {int} Seconds butonunun visible olmasini bekler")
+    public void visibleAfterSecondsButonununVisibleOlmasiniBekler(int onemsiz) {
+
+        // wait objesi olustur
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(20));
+
+        // bekledigimiz visible after 5 secods butonu
+        // visible olmadigi icin locate edip webelement olarak kaydetme sansimiz yok
+        // bunun yerine 2. ve 3. adimlari birlestirip
+        // locate edip kaydetme ve bekleme islemelerini BIRLIKTE yapiyoruz
+        // bekleme ve locate'i birlikte yapacagimiz icin
+        // page class'inda degil burada locate etmeliyiz
+
+        WebElement visibleAfter5SecondsButonu =
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("visibleAfter")));
+    }
+
+    @Then("butonun visible oldugunu test eder")
+    public void butonunVisibleOldugunuTestEder() {
+        Assertions.assertTrue(demoqaPage.visibleAfter5Seconds.isDisplayed());
+    }
 }

@@ -15,3 +15,5 @@
       Given kullanici test data dosyasinda verilen "demoqaUrl" anasayfaya gider
       Then soldaki sekmelerden Elements'e tiklar
       And  acilan menuden Dynamic Properties'e tiklar
+      And Visible After 5 Seconds butonunun visible olmasini bekler
+      Then butonun visible oldugunu test eder

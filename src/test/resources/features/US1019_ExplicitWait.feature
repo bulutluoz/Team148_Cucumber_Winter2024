@@ -1,7 +1,6 @@
 
   Feature: US1019 kullanici ozel bir gorev icin bekler
 
-
     Scenario: TC25 Kullanici webelementin enabled olmasini bekleyebilmeli
 
       Given kullanici test data dosyasinda verilen "demoqaUrl" anasayfaya gider
