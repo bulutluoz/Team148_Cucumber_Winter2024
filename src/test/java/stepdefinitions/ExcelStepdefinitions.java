@@ -100,7 +100,7 @@ public class ExcelStepdefinitions {
                ingilizceBaskentIsmi key olacak
 
             3- Kalan bilgiler nasil tek bir value yapilacak?
-                ingilizceBaskentIsmi, turkceUlkeIsmi, turkceBaskentIsmi
+                ingilizceUlkeIsmi, turkceUlkeIsmi, turkceBaskentIsmi
                 - birlestirip tek bir String yapmak
                 - map yapmak
                 - array veya list yapmak
@@ -109,7 +109,22 @@ public class ExcelStepdefinitions {
          */
 
         ulkelerMap = new TreeMap<>();
+        //   String, Map<String,String>
 
+        Map<String,String> valueMap;
+
+        for (int i = 1; i <= sayfa1.getLastRowNum() ; i++) {
+
+            valueMap = new TreeMap<>();
+            valueMap.put("ingilizceUlkeIsmi", sayfa1.getRow(i).getCell(0).getStringCellValue());
+            valueMap.put("turkceUlkeIsmi",sayfa1.getRow(i).getCell(2).getStringCellValue());
+            valueMap.put("turkceBaskentIsmi",sayfa1.getRow(i).getCell(3).getStringCellValue());
+
+            ulkelerMap.put(sayfa1.getRow(i).getCell(1).getStringCellValue(),valueMap);
+
+        }
+
+        System.out.println(ulkelerMap);
 
     }
 
